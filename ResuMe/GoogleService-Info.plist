@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>149862309879-5o6c5b1hvouc3sg88m6n1kbg9dbf93ac.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.149862309879-5o6c5b1hvouc3sg88m6n1kbg9dbf93ac</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDfuzXyWjMYQ8ONz6auI3rwPy1dMR_2uI4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>149862309879</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.yizheng.ResuMe</string>
+	<key>PROJECT_ID</key>
+	<string>resume-6bec3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>resume-6bec3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:149862309879:ios:0e14ed0e527e6c4b</string>
+	<key>DATABASE_URL</key>
+	<string>https://resume-6bec3.firebaseio.com</string>
+</dict>
+</plist>
