@@ -15,6 +15,7 @@
 		2522D28F21DC6AD300711808 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D28E21DC6AD300711808 /* Extensions.swift */; };
 		2522D29121DC6B6E00711808 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D29021DC6B6E00711808 /* CustomImageView.swift */; };
 		2522D29321DC6EF300711808 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2522D29221DC6EF300711808 /* GoogleService-Info.plist */; };
+		2522D29521DC79F400711808 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D29421DC79F400711808 /* MainTabBarController.swift */; };
 		8CFA8BAC6245B2EC0F6BFEE8 /* Pods_ResuMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D7F7F8B4A1A4540EE9DB53 /* Pods_ResuMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		2522D28E21DC6AD300711808 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2522D29021DC6B6E00711808 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		2522D29221DC6EF300711808 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2522D29421DC79F400711808 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		65D7F7F8B4A1A4540EE9DB53 /* Pods_ResuMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResuMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99EAADE875562F88FB533774 /* Pods-ResuMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResuMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ResuMe/Pods-ResuMe.debug.xcconfig"; sourceTree = "<group>"; };
 		EBE2DC98FB9BB5CD5A6C4807 /* Pods-ResuMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResuMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-ResuMe/Pods-ResuMe.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,8 +69,14 @@
 		2522D27821DC67DD00711808 /* ResuMe */ = {
 			isa = PBXGroup;
 			children = (
+				2522D29A21DC7DDF00711808 /* Login */,
+				2522D29921DC7DD800711808 /* Like */,
+				2522D29821DC7DCF00711808 /* Me */,
+				2522D29721DC7DC500711808 /* Search */,
+				2522D29621DC7DA800711808 /* Home */,
 				2522D28B21DC6A3300711808 /* Utils */,
 				2522D27921DC67DD00711808 /* AppDelegate.swift */,
+				2522D29421DC79F400711808 /* MainTabBarController.swift */,
 				2522D27B21DC67DD00711808 /* ViewController.swift */,
 				2522D27D21DC67DD00711808 /* Main.storyboard */,
 				2522D28021DC67DE00711808 /* Assets.xcassets */,
@@ -86,6 +94,41 @@
 				2522D29021DC6B6E00711808 /* CustomImageView.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2522D29621DC7DA800711808 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2522D29721DC7DC500711808 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		2522D29821DC7DCF00711808 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		2522D29921DC7DD800711808 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
+		2522D29A21DC7DDF00711808 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		884701430CEE313EC63616E6 /* Frameworks */ = {
@@ -180,8 +223,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ResuMe/Pods-ResuMe-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -190,8 +231,6 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -208,15 +247,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ResuMe-checkManifestLockResult.txt",
 			);
@@ -234,6 +269,7 @@
 			files = (
 				2522D27C21DC67DD00711808 /* ViewController.swift in Sources */,
 				2522D29121DC6B6E00711808 /* CustomImageView.swift in Sources */,
+				2522D29521DC79F400711808 /* MainTabBarController.swift in Sources */,
 				2522D28F21DC6AD300711808 /* Extensions.swift in Sources */,
 				2522D27A21DC67DD00711808 /* AppDelegate.swift in Sources */,
 			);
