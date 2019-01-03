@@ -53,7 +53,6 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
         super.init(frame: frame)
         //backgroundColor = .green
         hCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
-        //print(hCollectionView.numberOfSections)
         addSubview(hCollectionView)
         addSubview(pageControl)
         

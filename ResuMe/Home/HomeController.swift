@@ -12,10 +12,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     let cellId = "cellid"
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupHomeHeaderBar()
         collectionView?.backgroundColor = .white
-        
-        
+        setupHomeHeaderBar()
     }
     
     func setupHomeHeaderBar(){
