@@ -19,12 +19,12 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     func setupTabBarViewController() {
         //when the icon is selected, it will be black, otherwise it will be blue
         tabBar.tintColor = .black
-        //let layout = UICollectionViewFlowLayout()
-        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"))
+        let layout = UICollectionViewFlowLayout()
+        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: HomeController(collectionViewLayout: layout))
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected") , selectedImage: #imageLiteral(resourceName: "search_selected") )
         let meNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "profile_unselected") , selectedImage: #imageLiteral(resourceName: "profile_selected"))
         let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"))
-        let loginNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"))
+        let loginNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "login_unselected"), selectedImage: #imageLiteral(resourceName: "login_selected"))
         
         viewControllers = [homeNavController, searchNavController, meNavController, likeNavController, loginNavController]
         
