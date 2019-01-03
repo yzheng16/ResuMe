@@ -16,6 +16,9 @@
 		2522D29121DC6B6E00711808 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D29021DC6B6E00711808 /* CustomImageView.swift */; };
 		2522D29321DC6EF300711808 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2522D29221DC6EF300711808 /* GoogleService-Info.plist */; };
 		2522D29521DC79F400711808 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D29421DC79F400711808 /* MainTabBarController.swift */; };
+		25533A4B21DE8C7700DD30E5 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25533A4A21DE8C7700DD30E5 /* HomePostCell.swift */; };
+		25533A4D21DE9AAB00DD30E5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25533A4C21DE9AAB00DD30E5 /* SignUpController.swift */; };
+		25533A4F21DEA05300DD30E5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25533A4E21DEA05300DD30E5 /* LoginController.swift */; };
 		256E487321DD719200CC71D8 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E487221DD719200CC71D8 /* HomeController.swift */; };
 		256E487521DD7E6100CC71D8 /* HomeCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E487421DD7E6100CC71D8 /* HomeCarouselCell.swift */; };
 		256E487721DD944800CC71D8 /* HomeNavigationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E487621DD944800CC71D8 /* HomeNavigationCell.swift */; };
@@ -36,6 +39,9 @@
 		2522D29021DC6B6E00711808 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		2522D29221DC6EF300711808 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2522D29421DC79F400711808 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		25533A4A21DE8C7700DD30E5 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
+		25533A4C21DE9AAB00DD30E5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		25533A4E21DEA05300DD30E5 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		256E487221DD719200CC71D8 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		256E487421DD7E6100CC71D8 /* HomeCarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCarouselCell.swift; sourceTree = "<group>"; };
 		256E487621DD944800CC71D8 /* HomeNavigationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationCell.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 				256E487421DD7E6100CC71D8 /* HomeCarouselCell.swift */,
 				256E487621DD944800CC71D8 /* HomeNavigationCell.swift */,
 				256E487A21DDB85100CC71D8 /* HomePostHeaderCell.swift */,
+				25533A4A21DE8C7700DD30E5 /* HomePostCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -142,6 +149,8 @@
 		2522D29A21DC7DDF00711808 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				25533A4C21DE9AAB00DD30E5 /* SignUpController.swift */,
+				25533A4E21DEA05300DD30E5 /* LoginController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -285,13 +294,16 @@
 				2522D27C21DC67DD00711808 /* ViewController.swift in Sources */,
 				256E487521DD7E6100CC71D8 /* HomeCarouselCell.swift in Sources */,
 				2522D29121DC6B6E00711808 /* CustomImageView.swift in Sources */,
+				25533A4F21DEA05300DD30E5 /* LoginController.swift in Sources */,
 				256E487321DD719200CC71D8 /* HomeController.swift in Sources */,
 				256E487921DDAECE00CC71D8 /* BaseCell.swift in Sources */,
 				256E487721DD944800CC71D8 /* HomeNavigationCell.swift in Sources */,
+				25533A4D21DE9AAB00DD30E5 /* SignUpController.swift in Sources */,
 				2522D29521DC79F400711808 /* MainTabBarController.swift in Sources */,
 				256E487B21DDB85100CC71D8 /* HomePostHeaderCell.swift in Sources */,
 				2522D28F21DC6AD300711808 /* Extensions.swift in Sources */,
 				2522D27A21DC67DD00711808 /* AppDelegate.swift in Sources */,
+				25533A4B21DE8C7700DD30E5 /* HomePostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,17 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         setupTabBarViewController()
     }
     
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let index = viewControllers?.index(of: viewController)
+        if index == 4 {
+            let loginController = LoginController()
+            let navLoginController = UINavigationController(rootViewController: loginController)
+            present(navLoginController,animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+    
     func setupTabBarViewController() {
         //when the icon is selected, it will be black, otherwise it will be blue
         tabBar.tintColor = .black

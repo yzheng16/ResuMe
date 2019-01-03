@@ -12,7 +12,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     let cellId = "cellid"
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = UIColor(r: 238, g: 238, b: 244)
+//        collectionView?.backgroundColor = UIColor.lightGray
         setupHomeHeaderBar()
     }
     
@@ -21,6 +22,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 2{
+            return 2
+        }
         return 1
     }
     
@@ -31,18 +35,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.section == 0 {
-            collectionView.register(HomeCarouselCell.self, forCellWithReuseIdentifier: cellId)
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeCarouselCell
+            collectionView.register(HomeCarouselCell.self, forCellWithReuseIdentifier: "carouselCellId")
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCellId", for: indexPath) as! HomeCarouselCell
             //cell.backgroundColor = .yellow
             return cell
         }else if indexPath.section == 1 {
-            collectionView.register(HomeNavigationCell.self, forCellWithReuseIdentifier: cellId)
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeNavigationCell
+            collectionView.register(HomeNavigationCell.self, forCellWithReuseIdentifier: "navigationCellId")
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "navigationCellId", for: indexPath) as! HomeNavigationCell
             //cell.backgroundColor = .red
             return cell
         }else if indexPath.section == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-            cell.backgroundColor = .black
+            collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: "postCellId")
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCellId", for: indexPath) as! HomePostCell
+            //cell.backgroundColor = .black
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
@@ -57,10 +62,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }else if indexPath.section == 1 {// Navigation Bar
             return CGSize(width: view.frame.width, height: 120)
         }else if indexPath.section == 2 {// Post section
-            // test 1 post
             return CGSize(width: view.frame.width, height: view.frame.width + 50 + 80)
         }
         return CGSize(width: view.frame.width, height: 250)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 18
     }
     
     //Post section header

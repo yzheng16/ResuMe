@@ -22,7 +22,13 @@ class HomePostHeaderCell: BaseCell, UICollectionViewDataSource, UICollectionView
         return collectionView
     }()
     
-    let separatorBar: UIView = {
+    let separatorTopBar: UIView = {
+        let v = UIView()
+        v.backgroundColor = UIColor(r: 215, g: 216, b: 218)
+        return v
+    }()
+    
+    let separatorBottomBar: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor(r: 99, g: 149, b: 224)
         return v
@@ -53,11 +59,15 @@ class HomePostHeaderCell: BaseCell, UICollectionViewDataSource, UICollectionView
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
         
+        addSubview(separatorTopBar)
         addSubview(collectionView)
-        addSubview(separatorBar)
-        collectionView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
-        separatorBar.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: frame.width / 2, heightConstant: 4)
+        addSubview(separatorBottomBar)
+        
+        separatorTopBar.anchor(topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
+        collectionView.anchor(separatorTopBar.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
+        separatorBottomBar.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: frame.width / 2, heightConstant: 4)
     }
     
     required init?(coder aDecoder: NSCoder) {
