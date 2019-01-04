@@ -88,8 +88,8 @@ class SignUpController: UIViewController {
             print("successfully created user:\n", user?.user.uid ?? "")
             
             guard let uid = user?.user.uid else {return}
-            //let dictionaryValues = ["username": username] as [String : Any]
-            let values = [uid: 1]
+            let dictionaryValues = ["username": username] as [String : Any]
+            let values = [uid: dictionaryValues]
             Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (error, reference) in
                 if let err = error {
                     print("Fail to save user info into db\n", err)
