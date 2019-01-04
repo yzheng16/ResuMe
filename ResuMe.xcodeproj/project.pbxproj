@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250679A121E0022200D03540 /* LogoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250679A021E0022200D03540 /* LogoutController.swift */; };
+		250679A421E00D0B00D03540 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250679A321E00D0B00D03540 /* User.swift */; };
 		2522D27A21DC67DD00711808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D27921DC67DD00711808 /* AppDelegate.swift */; };
 		2522D27C21DC67DD00711808 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D27B21DC67DD00711808 /* ViewController.swift */; };
 		2522D27F21DC67DD00711808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2522D27D21DC67DD00711808 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		250679A021E0022200D03540 /* LogoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutController.swift; sourceTree = "<group>"; };
+		250679A321E00D0B00D03540 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2522D27621DC67DD00711808 /* ResuMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResuMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2522D27921DC67DD00711808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2522D27B21DC67DD00711808 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +68,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		250679A221E00CFA00D03540 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				250679A321E00D0B00D03540 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		250679A521E0134800D03540 /* AddPicture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddPicture;
+			sourceTree = "<group>";
+		};
 		2522D26D21DC67DD00711808 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +104,8 @@
 		2522D27821DC67DD00711808 /* ResuMe */ = {
 			isa = PBXGroup;
 			children = (
+				250679A521E0134800D03540 /* AddPicture */,
+				250679A221E00CFA00D03540 /* Models */,
 				2522D29A21DC7DDF00711808 /* Login */,
 				2522D29921DC7DD800711808 /* Like */,
 				2522D29821DC7DCF00711808 /* Me */,
@@ -151,6 +172,7 @@
 			children = (
 				25533A4C21DE9AAB00DD30E5 /* SignUpController.swift */,
 				25533A4E21DEA05300DD30E5 /* LoginController.swift */,
+				250679A021E0022200D03540 /* LogoutController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -299,11 +321,13 @@
 				256E487921DDAECE00CC71D8 /* BaseCell.swift in Sources */,
 				256E487721DD944800CC71D8 /* HomeNavigationCell.swift in Sources */,
 				25533A4D21DE9AAB00DD30E5 /* SignUpController.swift in Sources */,
+				250679A421E00D0B00D03540 /* User.swift in Sources */,
 				2522D29521DC79F400711808 /* MainTabBarController.swift in Sources */,
 				256E487B21DDB85100CC71D8 /* HomePostHeaderCell.swift in Sources */,
 				2522D28F21DC6AD300711808 /* Extensions.swift in Sources */,
 				2522D27A21DC67DD00711808 /* AppDelegate.swift in Sources */,
 				25533A4B21DE8C7700DD30E5 /* HomePostCell.swift in Sources */,
+				250679A121E0022200D03540 /* LogoutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

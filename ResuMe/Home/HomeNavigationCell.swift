@@ -12,7 +12,7 @@ class HomeNavigationCell: UICollectionViewCell {
     
     let schoolButton: UIButton = {
         let b = UIButton(type: .system)
-        b.setImage(#imageLiteral(resourceName: "home_selected"), for: .normal)
+        b.setImage(#imageLiteral(resourceName: "school64").withRenderingMode(.alwaysOriginal), for: .normal)
         b.setTitle("School", for: .normal)
         b.tintColor = .black
         b.alignTextBelow()
@@ -21,7 +21,7 @@ class HomeNavigationCell: UICollectionViewCell {
     
     let workButton: UIButton = {
         let b = UIButton(type: .system)
-        b.setImage(#imageLiteral(resourceName: "home_selected"), for: .normal)
+        b.setImage(#imageLiteral(resourceName: "work64").withRenderingMode(.alwaysOriginal), for: .normal)
         b.setTitle("Work", for: .normal)
         b.tintColor = .black
         b.alignTextBelow()
@@ -30,7 +30,7 @@ class HomeNavigationCell: UICollectionViewCell {
     
     let leisureButton: UIButton = {
         let b = UIButton(type: .system)
-        b.setImage(#imageLiteral(resourceName: "home_selected"), for: .normal)
+        b.setImage(#imageLiteral(resourceName: "leisure64").withRenderingMode(.alwaysOriginal), for: .normal)
         b.setTitle("Leisure", for: .normal)
         b.tintColor = .black
         b.alignTextBelow()
