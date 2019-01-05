@@ -10,12 +10,15 @@ import UIKit
 
 class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    var carouselImages: [UIColor]?
+    var timer: Timer?
+    
     lazy var hCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
-        //collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -23,12 +26,13 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
     }()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return (carouselImages?.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselImageCellId", for: indexPath)
-        cell.backgroundColor = .green
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselImageCellId", for: indexPath) as! CarouselImageCell
+        //cell.backgroundColor = .green
+        cell.carouselImage = carouselImages?[indexPath.item]
         return cell
     }
     
@@ -37,6 +41,8 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        let cgPoint = CGPoint(x: frame.width, y: 0)
+        collectionView.setContentOffset(cgPoint, animated: false)
         return 0
     }
     
@@ -49,18 +55,88 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
         return pc
     }()
     
+    // automatically switch
+    @objc func handleSwitchToNextCell(){
+        let cellSize = CGSize(width: frame.width, height: frame.height)
+        let contentOffset = hCollectionView.contentOffset
+        let rect = CGRect(x: contentOffset.x + cellSize.width, y: contentOffset.y, width: cellSize.width, height: cellSize.height)
+        hCollectionView.scrollRectToVisible(rect, animated: true)
+        
+        let index = contentOffset.x / frame.width
+        pageControl.currentPage = Int(index)
+    }
+    
+    func startTimer() -> Timer{
+        let timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(handleSwitchToNextCell), userInfo: nil, repeats: true)
+        return timer
+    }
+    
+    // manually switch
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        self.timer?.invalidate()
+        let index = targetContentOffset.pointee.x / frame.width
+        let imagesCount = CGFloat((carouselImages?.count)!) - 2
+        if index <= imagesCount && index > 0 {
+            pageControl.currentPage = Int(index) - 1
+        }
+        self.timer = startTimer()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let x = scrollView.contentOffset.x
+        let imagesCount = CGFloat((carouselImages?.count)!) - 2
+        if x == frame.width * (imagesCount + 1){
+            let cgPoint = CGPoint(x: frame.width, y: 0)
+            scrollView.setContentOffset(cgPoint, animated: false)
+            pageControl.currentPage = 0
+        }else if x == 0{
+            let cgPoint = CGPoint(x: frame.width * imagesCount, y: 0)
+            scrollView.setContentOffset(cgPoint, animated: false)
+            pageControl.currentPage = (carouselImages?.count)!
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         //backgroundColor = .green
-        hCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CarouselImageCellId")
+        hCollectionView.register(CarouselImageCell.self, forCellWithReuseIdentifier: "CarouselImageCellId")
         addSubview(hCollectionView)
         addSubview(pageControl)
         
         hCollectionView.fillSuperview()
         pageControl.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        self.timer = startTimer()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+class CarouselImageCell: UICollectionViewCell {
+    
+    var carouselImage: UIColor?{
+        didSet{
+            imageView.backgroundColor = carouselImage
+        }
+    }
+    
+    let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.backgroundColor = .black
+        return iv
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        addSubview(imageView)
+        imageView.fillSuperview()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+

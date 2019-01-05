@@ -8,9 +8,14 @@
 
 import UIKit
 
+
+
 class HomePostHeaderCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     let headerTitle = ["School", "Career"]
+    var separatorBottomBarLeftAnchorConstraint: NSLayoutConstraint?
+    var separatorBottomBarLeftAnchorConstraintTry: [NSLayoutConstraint]?
+    var homePostCell: HomePostCell?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -35,7 +40,7 @@ class HomePostHeaderCell: BaseCell, UICollectionViewDataSource, UICollectionView
     }()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return headerTitle.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -49,11 +54,21 @@ class HomePostHeaderCell: BaseCell, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width / 2, height: 50)
+        return CGSize(width: frame.width / CGFloat(headerTitle.count), height: 50)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let x = CGFloat(indexPath.item) * frame.width / 2
+        //separatorBottomBar.anchor(nil, left: nil, bottom: bottomAnchor, right: nil, topConstant: 0, leftConstant: x, bottomConstant: 0, rightConstant: 0, widthConstant: frame.width / 2, heightConstant: 4)
+        separatorBottomBarLeftAnchorConstraint?.constant = x
+        separatorBottomBarLeftAnchorConstraintTry?[0].constant = x
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.layoutIfNeeded()
+        }, completion: nil)
     }
     
     override init(frame: CGRect) {
@@ -67,6 +82,10 @@ class HomePostHeaderCell: BaseCell, UICollectionViewDataSource, UICollectionView
         separatorTopBar.anchor(topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
         collectionView.anchor(separatorTopBar.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
         separatorBottomBar.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: frame.width / 2, heightConstant: 4)
+        
+        separatorBottomBarLeftAnchorConstraintTry = separatorBottomBar.anchorWithReturnAnchors(nil, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: frame.width / 2, heightConstant: 4)
+        separatorBottomBarLeftAnchorConstraint = separatorBottomBar.leftAnchor.constraint(equalTo: self.leftAnchor)
+        separatorBottomBarLeftAnchorConstraint?.isActive = true
         
         collectionView.register(HeaderTitleCell.self, forCellWithReuseIdentifier: "PostHeaderCellId")
     }

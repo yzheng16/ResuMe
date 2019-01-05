@@ -9,7 +9,11 @@
 import UIKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    let cellId = "cellid"
+    //let cellId = "cellid"
+    
+    let carouselImages = [UIColor.yellow, UIColor.green, UIColor.red, UIColor.yellow, UIColor.green]
+    var homePostCell: HomePostCell?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = UIColor(r: 238, g: 238, b: 244)
@@ -41,15 +45,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCellId", for: indexPath) as! HomeCarouselCell
             //cell.backgroundColor = .yellow
+            cell.carouselImages = self.carouselImages
             return cell
         }else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "navigationCellId", for: indexPath) as! HomeNavigationCell
             //cell.backgroundColor = .red
             return cell
         }else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCellId", for: indexPath) as! HomePostCell
+            homePostCell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCellId", for: indexPath) as? HomePostCell
             //cell.backgroundColor = .black
-            return cell
+            return homePostCell!
         }
     }
     
@@ -73,6 +78,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         collectionView.register(HomePostHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! HomePostHeaderCell
+        header.homePostCell = self.homePostCell
         return header
     }
     
@@ -82,4 +88,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
         return CGSize(width: 0, height: 0)
     }
+    
+//    func scrollToPostHeaderIndex(index: Int){
+//        let indexPath = IndexPath(item: index, section: 0)
+//    }
 }
