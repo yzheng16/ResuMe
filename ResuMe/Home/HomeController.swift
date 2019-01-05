@@ -15,6 +15,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.backgroundColor = UIColor(r: 238, g: 238, b: 244)
 //        collectionView?.backgroundColor = UIColor.lightGray
         setupHomeHeaderBar()
+        
+        collectionView?.register(HomeCarouselCell.self, forCellWithReuseIdentifier: "carouselCellId")
+        collectionView?.register(HomeNavigationCell.self, forCellWithReuseIdentifier: "navigationCellId")
+        collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: "postCellId")
     }
     
     func setupHomeHeaderBar(){
@@ -35,25 +39,18 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.section == 0 {
-            collectionView.register(HomeCarouselCell.self, forCellWithReuseIdentifier: "carouselCellId")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCellId", for: indexPath) as! HomeCarouselCell
             //cell.backgroundColor = .yellow
             return cell
         }else if indexPath.section == 1 {
-            collectionView.register(HomeNavigationCell.self, forCellWithReuseIdentifier: "navigationCellId")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "navigationCellId", for: indexPath) as! HomeNavigationCell
             //cell.backgroundColor = .red
             return cell
-        }else if indexPath.section == 2 {
-            collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: "postCellId")
+        }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCellId", for: indexPath) as! HomePostCell
             //cell.backgroundColor = .black
             return cell
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .yellow
-        
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -74,8 +71,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     //Post section header
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        collectionView.register(HomePostHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerid")
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerid", for: indexPath) as! HomePostHeaderCell
+        collectionView.register(HomePostHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! HomePostHeaderCell
         return header
     }
     

@@ -27,7 +27,7 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselImageCellId", for: indexPath)
         cell.backgroundColor = .green
         return cell
     }
@@ -52,7 +52,7 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
     override init(frame: CGRect) {
         super.init(frame: frame)
         //backgroundColor = .green
-        hCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
+        hCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CarouselImageCellId")
         addSubview(hCollectionView)
         addSubview(pageControl)
         

@@ -39,8 +39,7 @@ class HomePostHeaderCell: BaseCell, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        collectionView.register(HeaderTitleCell.self, forCellWithReuseIdentifier: "cellid")
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath) as! HeaderTitleCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostHeaderCellId", for: indexPath) as! HeaderTitleCell
         cell.title.text = headerTitle[indexPath.item]
         cell.title.textColor = UIColor(r: 187, g: 187, b: 187)
         //default selected item
@@ -68,6 +67,8 @@ class HomePostHeaderCell: BaseCell, UICollectionViewDataSource, UICollectionView
         separatorTopBar.anchor(topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
         collectionView.anchor(separatorTopBar.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
         separatorBottomBar.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: frame.width / 2, heightConstant: 4)
+        
+        collectionView.register(HeaderTitleCell.self, forCellWithReuseIdentifier: "PostHeaderCellId")
     }
     
     required init?(coder aDecoder: NSCoder) {
