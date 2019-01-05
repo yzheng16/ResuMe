@@ -19,6 +19,7 @@
 		2522D29321DC6EF300711808 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2522D29221DC6EF300711808 /* GoogleService-Info.plist */; };
 		2522D29521DC79F400711808 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2522D29421DC79F400711808 /* MainTabBarController.swift */; };
 		2532229921E1451E007B12C8 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2532229821E1451E007B12C8 /* PostCell.swift */; };
+		2532229B21E15926007B12C8 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2532229A21E15926007B12C8 /* PostController.swift */; };
 		25533A4B21DE8C7700DD30E5 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25533A4A21DE8C7700DD30E5 /* HomePostCell.swift */; };
 		25533A4D21DE9AAB00DD30E5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25533A4C21DE9AAB00DD30E5 /* SignUpController.swift */; };
 		25533A4F21DEA05300DD30E5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25533A4E21DEA05300DD30E5 /* LoginController.swift */; };
@@ -47,6 +48,7 @@
 		2522D29221DC6EF300711808 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2522D29421DC79F400711808 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		2532229821E1451E007B12C8 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		2532229A21E15926007B12C8 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		25533A4A21DE8C7700DD30E5 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		25533A4C21DE9AAB00DD30E5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		25533A4E21DEA05300DD30E5 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				256E487A21DDB85100CC71D8 /* HomePostHeaderCell.swift */,
 				25533A4A21DE8C7700DD30E5 /* HomePostCell.swift */,
 				2532229821E1451E007B12C8 /* PostCell.swift */,
+				2532229A21E15926007B12C8 /* PostController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2532229B21E15926007B12C8 /* PostController.swift in Sources */,
 				2522D27C21DC67DD00711808 /* ViewController.swift in Sources */,
 				256E487521DD7E6100CC71D8 /* HomeCarouselCell.swift in Sources */,
 				2522D29121DC6B6E00711808 /* CustomImageView.swift in Sources */,

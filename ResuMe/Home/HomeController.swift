@@ -50,6 +50,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "navigationCellId", for: indexPath) as! HomeNavigationCell
             //cell.backgroundColor = .red
+            cell.homeController = self
             return cell
         }else {
             homePostCell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCellId", for: indexPath) as? HomePostCell
@@ -92,4 +93,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 //    func scrollToPostHeaderIndex(index: Int){
 //        let indexPath = IndexPath(item: index, section: 0)
 //    }
+    
+    func homeNavigation(index: Int){
+        let layout = UICollectionViewFlowLayout()
+        let postController = PostController(collectionViewLayout: layout)
+        navigationController?.pushViewController(postController, animated: true)
+        if index == 0 {
+            navigationItem.title = "School"
+        }else if index == 1 {
+            navigationItem.title = "Work"
+        }else {
+            navigationItem.title = "Leisure"
+        }
+    }
 }
