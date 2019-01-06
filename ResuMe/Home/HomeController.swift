@@ -12,6 +12,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     //let cellId = "cellid"
     
     let carouselImages = [UIColor.yellow, UIColor.green, UIColor.red, UIColor.yellow, UIColor.green]
+    let navigationName = ["School", "Work", "Leisure"]
     var homePostCell: HomePostCell?
     
     override func viewDidLoad() {
@@ -27,10 +28,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func setupHomeHeaderBar(){
         navigationItem.title = "Yi Zheng (Amy)"
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 2{
+        if section == 1 {
+            return 3
+        }else if section == 2 {
             return 2
         }
         return 1
@@ -50,7 +54,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "navigationCellId", for: indexPath) as! HomeNavigationCell
             //cell.backgroundColor = .red
-            cell.homeController = self
+            //cell.homeController = self
+            cell.navImage.image = UIImage(named: navigationName[indexPath.item])?.withRenderingMode(.alwaysOriginal)
+            cell.navLabel.text = navigationName[indexPath.item]
             return cell
         }else {
             homePostCell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCellId", for: indexPath) as? HomePostCell
@@ -63,7 +69,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         if indexPath.section == 0 {// Carousel section
             return CGSize(width: view.frame.width, height: 200)
         }else if indexPath.section == 1 {// Navigation Bar
-            return CGSize(width: view.frame.width, height: 120)
+//            UIButton solution
+//            return CGSize(width: view.frame.width, height: 120)
+            return CGSize(width: view.frame.width / 3, height: 120)
         }else if indexPath.section == 2 {// Post section
             return CGSize(width: view.frame.width, height: view.frame.width + 50 + 80)
         }
@@ -71,7 +79,21 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 18
+        if section == 1 {
+            return 0
+        }else {
+            return 18
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            homeNavigation(index: indexPath.item)
+        }
     }
     
     //Post section header
@@ -99,11 +121,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let postController = PostController(collectionViewLayout: layout)
         navigationController?.pushViewController(postController, animated: true)
         if index == 0 {
-            navigationItem.title = "School"
+            postController.navigationItem.title = "School"
         }else if index == 1 {
-            navigationItem.title = "Work"
+            postController.navigationItem.title = "Work"
         }else {
-            navigationItem.title = "Leisure"
+            postController.navigationItem.title = "Leisure"
         }
     }
 }
