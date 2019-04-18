@@ -19,7 +19,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        let index = viewControllers?.index(of: viewController)
+        let index = viewControllers?.firstIndex(of: viewController)
         if index == 4 {
             if Auth.auth().currentUser == nil{
                 let loginController = LoginController()
@@ -35,7 +35,15 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
                 setupTabBarViewController()
                 return false
             }
-            
+        }
+        if index == 2 {
+            if Auth.auth().currentUser?.uid == "84o4EIUygdWycplh88r2tCz6vB43"{
+                let layout = UICollectionViewFlowLayout()
+                let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
+                let navLogoutController = UINavigationController(rootViewController: photoSelectorController)
+                present(navLogoutController, animated: true, completion: nil)
+                return false
+            }
         }
         return true
     }
@@ -61,7 +69,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         guard let items = tabBar.items else {return}
         
         for item in items {
-            item.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+            item.imageInsets = UIEdgeInsets.init(top: 5, left: 0, bottom: -5, right: 0)
         }
     }
     

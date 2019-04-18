@@ -46,8 +46,8 @@ class LoginController: UIViewController {
     
     let gotoSignUpPageButton: UIButton = {
         let b = UIButton()
-        let attributedTitle = NSMutableAttributedString(string: "Don't have a account? ", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedStringKey.foregroundColor: UIColor(r: 17, g: 154, b: 237)]))
+        let attributedTitle = NSMutableAttributedString(string: "Don't have a account? ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedString.Key.foregroundColor: UIColor(r: 17, g: 154, b: 237)]))
         b.setAttributedTitle(attributedTitle, for: .normal)
         b.addTarget(self, action: #selector(handlerShowSignUpPage), for: .touchUpInside)
         return b
