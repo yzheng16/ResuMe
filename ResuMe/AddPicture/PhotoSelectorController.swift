@@ -39,7 +39,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     
     func fetchPhotos(){
         let fetchOptions = PHFetchOptions()
-        fetchOptions.fetchLimit = 15
+        fetchOptions.fetchLimit = 30
         // need permission key, otherwise it would crash
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchOptions.sortDescriptors = [sortDescriptor]
@@ -66,7 +66,6 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
                 })
             }
         }
-        
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -84,7 +83,9 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     }
     
     @objc func handleNext(){
-        
+        let sharePhotoController = SharePhotoController()
+        sharePhotoController.selectedImage = header?.selectedImage
+        navigationController?.pushViewController(sharePhotoController, animated: true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -10,6 +10,26 @@ import UIKit
 
 class HomePostCell: UICollectionViewCell {
     
+    var post: Post?{
+        didSet{
+            guard let imageUrl = post?.imageUrl else {return}
+            photoImageView.loadImage(urlString: imageUrl)
+//            guard let user = post?.user else {return}
+//            photoImageView.loadImage(urlString: user.profileImageUrl)
+//            username.text = user.username
+            setupCaption()
+        }
+    }
+    
+    func setupCaption(){
+        guard let post = self.post else {return}
+        let attributedText = NSMutableAttributedString(string: "\(post.user.username) ", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: "\(post.caption)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 5)]))
+        attributedText.append(NSAttributedString(string: "1 week ago", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]))
+        captionLabel.attributedText = attributedText
+    }
+    
     let photoImageView: CustomImageView = {
         let civ = CustomImageView()
         civ.contentMode = .scaleAspectFill
@@ -46,7 +66,7 @@ class HomePostCell: UICollectionViewCell {
         let buttonStackView = UIStackView(arrangedSubviews: [likeButton, commentButton])
         buttonStackView.distribution = .fillEqually
         addSubview(buttonStackView)
-        buttonStackView.anchor(photoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, topConstant: 8, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 50)
+        buttonStackView.anchor(photoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 50)
         
         addSubview(captionLabel)
         captionLabel.anchor(likeButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)

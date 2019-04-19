@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     //let cellId = "cellid"
@@ -24,6 +25,33 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(HomeCarouselCell.self, forCellWithReuseIdentifier: "carouselCellId")
         collectionView?.register(HomeNavigationCell.self, forCellWithReuseIdentifier: "navigationCellId")
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: "postCellId")
+        
+        fetchPosts()
+    }
+    
+    var posts = [Post]()
+    func fetchPosts(){
+//        guard let uid = Auth.auth().currentUser?.uid else {return}
+        Database.fetchUserWithUID(uid: "fqmXu9io3iaUOvMPDEvfiLYH1dv1") { (user) in
+            self.fetchPostWithUser(user: user)
+        }
+    }
+    
+    func fetchPostWithUser(user: User){
+        let databaseRef = Database.database().reference()
+        let databasePosts = databaseRef.child("posts").child(user.uid)
+        databasePosts.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else {return}
+            dictionary.forEach({ (key, value) in
+                guard let dictionary = value as? [String: Any] else {return}
+                let post = Post(user: user, dictionary: dictionary)
+                //                    self.posts.insert(post, at: 0)
+                self.posts.append(post)
+            })
+            self.collectionView?.reloadData()
+        }) { (error) in
+            print("Failed to fetch posts", error)
+        }
     }
     
     func setupHomeHeaderBar(){
@@ -35,7 +63,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         if section == 1 {
             return 3
         }else if section == 2 {
-            return 2
+            return posts.count
         }
         return 1
     }
@@ -61,6 +89,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }else {
             homePostCell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCellId", for: indexPath) as? HomePostCell
             //cell.backgroundColor = .black
+            homePostCell?.post = posts[indexPath.item]
             return homePostCell!
         }
     }

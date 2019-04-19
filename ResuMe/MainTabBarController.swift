@@ -37,7 +37,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             }
         }
         if index == 2 {
-            if Auth.auth().currentUser?.uid == "84o4EIUygdWycplh88r2tCz6vB43"{
+            if Auth.auth().currentUser?.uid == "fqmXu9io3iaUOvMPDEvfiLYH1dv1"{
                 let layout = UICollectionViewFlowLayout()
                 let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
                 let navLogoutController = UINavigationController(rootViewController: photoSelectorController)
@@ -59,7 +59,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"))
         let loginNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "login_unselected"), selectedImage: #imageLiteral(resourceName: "login_selected"))
         
-        if Auth.auth().currentUser?.uid == "84o4EIUygdWycplh88r2tCz6vB43"{
+        if Auth.auth().currentUser?.uid == "fqmXu9io3iaUOvMPDEvfiLYH1dv1"{
             viewControllers = [homeNavController, searchNavController, plusNavController, likeNavController, loginNavController]
         }else{
             viewControllers = [homeNavController, searchNavController, meNavController, likeNavController, loginNavController]
