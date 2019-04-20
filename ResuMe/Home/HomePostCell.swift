@@ -34,7 +34,6 @@ class HomePostCell: UICollectionViewCell {
         let civ = CustomImageView()
         civ.contentMode = .scaleAspectFill
         civ.clipsToBounds = true
-        civ.backgroundColor = .green
         return civ
     }()
     
