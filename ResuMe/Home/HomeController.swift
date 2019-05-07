@@ -9,10 +9,10 @@
 import UIKit
 import Firebase
 
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, HomePostCellDelegate {
     //let cellId = "cellid"
     
-    let carouselImages = [UIColor.yellow, UIColor.green, UIColor.red, UIColor.yellow, UIColor.green]
+//    let carouselImages = [UIColor.yellow, UIColor.green, UIColor.red, UIColor.yellow, UIColor.green]
     let navigationName = ["School", "Work", "Leisure"]
     var homePostCell: HomePostCell?
     
@@ -27,6 +27,29 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: "postCellId")
         
         fetchPosts()
+        fetchCarouselImages()
+    }
+    
+    var carouselImageUrls: [String]?
+    func fetchCarouselImages(){
+        let databaseRef = Database.database().reference()
+        let databaseCarouselImages = databaseRef.child("carouselImageUrl")
+        databaseCarouselImages.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let array = snapshot.value as? [String] else {return}
+            self.carouselImageUrls = Array(repeating: "nil", count: array.count + 2)
+            for i in 0..<array.count + 2 {
+                if i == 0 {
+                    self.carouselImageUrls?[i] = array[array.count - 1]
+                }else if i == array.count + 1 {
+                    self.carouselImageUrls?[i] = array[0]
+                }else {
+                    self.carouselImageUrls?[i] = array[i - 1]
+                }
+            }
+            self.collectionView?.reloadData()
+        }){ (error) in
+            print("Failed to fetch carousels", error)
+        }
     }
     
     var posts = [Post]()
@@ -77,7 +100,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCellId", for: indexPath) as! HomeCarouselCell
             //cell.backgroundColor = .yellow
-            cell.carouselImages = self.carouselImages
+            cell.carouselImageUrls = self.carouselImageUrls
             return cell
         }else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "navigationCellId", for: indexPath) as! HomeNavigationCell
@@ -90,8 +113,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             homePostCell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCellId", for: indexPath) as? HomePostCell
             //cell.backgroundColor = .black
             homePostCell?.post = posts[indexPath.item]
+            
+            homePostCell?.delegate = self
             return homePostCell!
         }
+    }
+    
+    func didTapComment(post: Post) {
+        let layout = UICollectionViewFlowLayout()
+        let commentsController = CommentsController(collectionViewLayout: layout)
+        
+        navigationController?.pushViewController(commentsController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -10,7 +10,7 @@ import UIKit
 
 class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var carouselImages: [UIColor]?
+    var carouselImageUrls: [String]?
     var timer: Timer?
     
     lazy var hCollectionView: UICollectionView = {
@@ -26,13 +26,16 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
     }()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (carouselImages?.count)!
+        if let count = carouselImageUrls?.count {
+            return count
+        }
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselImageCellId", for: indexPath) as! CarouselImageCell
         //cell.backgroundColor = .green
-        cell.carouselImage = carouselImages?[indexPath.item]
+        cell.carouselImageUrl = carouselImageUrls?[indexPath.item]
         return cell
     }
     
@@ -73,9 +76,10 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
     
     // manually switch
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard let count = carouselImageUrls?.count else  {return}
         self.timer?.invalidate()
         let index = targetContentOffset.pointee.x / frame.width
-        let imagesCount = CGFloat((carouselImages?.count)!) - 2
+        let imagesCount = CGFloat(count) - 2
         if index <= imagesCount && index > 0 {
             pageControl.currentPage = Int(index) - 1
         }
@@ -83,8 +87,9 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let count = carouselImageUrls?.count else  {return}
         let x = scrollView.contentOffset.x
-        let imagesCount = CGFloat((carouselImages?.count)!) - 2
+        let imagesCount = CGFloat(count - 2)
         if x == frame.width * (imagesCount + 1){
             let cgPoint = CGPoint(x: frame.width, y: 0)
             scrollView.setContentOffset(cgPoint, animated: false)
@@ -92,7 +97,7 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
         }else if x == 0{
             let cgPoint = CGPoint(x: frame.width * imagesCount, y: 0)
             scrollView.setContentOffset(cgPoint, animated: false)
-            pageControl.currentPage = (carouselImages?.count)!
+            pageControl.currentPage = count
         }
     }
     
@@ -115,23 +120,24 @@ class HomeCarouselCell: BaseCell, UICollectionViewDelegateFlowLayout, UICollecti
 
 class CarouselImageCell: UICollectionViewCell {
     
-    var carouselImage: UIColor?{
+    var carouselImageUrl: String?{
         didSet{
-            imageView.backgroundColor = carouselImage
+            guard let imageUrl = carouselImageUrl else {return}
+            photoImageView.loadImage(urlString: imageUrl)
         }
     }
     
-    let imageView: UIImageView = {
-        let iv = UIImageView()
-        iv.backgroundColor = .black
-        return iv
+    let photoImageView: CustomImageView = {
+        let civ = CustomImageView()
+        civ.backgroundColor = .red
+        return civ
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(imageView)
-        imageView.fillSuperview()
+        addSubview(photoImageView)
+        photoImageView.fillSuperview()
     }
     
     required init?(coder aDecoder: NSCoder) {

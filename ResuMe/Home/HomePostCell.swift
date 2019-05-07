@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol HomePostCellDelegate {
+    func didTapComment(post: Post)
+}
+
 class HomePostCell: UICollectionViewCell {
+    
+    var delegate: HomePostCellDelegate?
     
     var post: Post?{
         didSet{
@@ -43,11 +49,18 @@ class HomePostCell: UICollectionViewCell {
         return b
     }()
     
-    let commentButton: UIButton = {
+    lazy var commentButton: UIButton = {
         let b = UIButton(type: .system)
         b.setImage(#imageLiteral(resourceName: "comment").withRenderingMode(.alwaysOriginal), for: .normal)
+        b.addTarget(self, action: #selector(handleComment), for: .touchUpInside)
         return b
     }()
+    
+    @objc func handleComment() {
+        print("trying to show comments")
+        guard let post = self.post else {return}
+        delegate?.didTapComment(post: post)
+    }
     
     let captionLabel: UILabel = {
         let l = UILabel()
