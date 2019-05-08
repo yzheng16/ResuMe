@@ -9,6 +9,7 @@
 import Foundation
 
 struct Post {
+    var id: String?
     var imageUrl: String
     var user: User
     var caption: String
