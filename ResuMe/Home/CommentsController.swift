@@ -126,7 +126,14 @@ class CommentsController: UICollectionViewController, UICollectionViewDelegateFl
     
     @objc func handleSend() {
 //        print("post id:", self.post?.id ?? "")
-        guard let uid = Auth.auth().currentUser?.uid else {return}
+//        guard let uid = Auth.auth().currentUser?.uid else {return}
+        guard let uid = Auth.auth().currentUser?.uid else {
+            let alertController = UIAlertController(title: "Please Sign in", message: "You need to sign in.", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Comfirm", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
         let postId = self.post?.id ?? ""
         let values = ["text": commentTextField.text ?? "", "creationDate": Date().timeIntervalSince1970, "uid": uid] as [String : Any]
         Database.database().reference().child("comments").child(postId).childByAutoId().updateChildValues(values) { (err, ref) in
