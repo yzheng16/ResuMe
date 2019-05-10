@@ -17,6 +17,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     
     override func viewDidLoad() {
         collectionView.backgroundColor = .white
+        navigationItem.title = "New Post"
         setupNavigationButtons()
         
         collectionView?.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: cellId)

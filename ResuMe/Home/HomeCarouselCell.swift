@@ -129,7 +129,7 @@ class CarouselImageCell: UICollectionViewCell {
     
     let photoImageView: CustomImageView = {
         let civ = CustomImageView()
-        civ.backgroundColor = .red
+//        civ.backgroundColor = .red
         return civ
     }()
     

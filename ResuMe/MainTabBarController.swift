@@ -12,7 +12,7 @@ import Firebase
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+//        view.backgroundColor = .red
         delegate = self
         setupTabBarViewController()
 //        print(Auth.auth().currentUser?.uid ?? "default")
@@ -54,9 +54,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let layout = UICollectionViewFlowLayout()
         let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: HomeController(collectionViewLayout: layout))
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected") , selectedImage: #imageLiteral(resourceName: "search_selected") , rootViewController: UserSearchController(collectionViewLayout: layout))
-        let meNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "profile_unselected") , selectedImage: #imageLiteral(resourceName: "profile_selected"))
+        let meNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "profile_unselected") , selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController: MeController())
         let plusNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "plus_unselected") , selectedImage: #imageLiteral(resourceName: "plus_unselected"))
-        let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"))
+        let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), rootViewController: LikeController())
         let loginNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "login_unselected"), selectedImage: #imageLiteral(resourceName: "login_selected"))
         
         if Auth.auth().currentUser?.uid == "fqmXu9io3iaUOvMPDEvfiLYH1dv1"{

@@ -160,21 +160,23 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     //Post section header
+    // For version 2
+//    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        collectionView.register(HomePostHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
+//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! HomePostHeaderCell
+//        header.homePostCell = self.homePostCell
+//        return header
+//    }
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        collectionView.register(HomePostHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! HomePostHeaderCell
-        header.homePostCell = self.homePostCell
-        return header
-    }
+    // For version 2
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        if section == 2 {
+//            return CGSize(width: view.frame.width, height: 50)
+//        }
+//        return CGSize(width: 0, height: 0)
+//    }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 2 {
-            return CGSize(width: view.frame.width, height: 50)
-        }
-        return CGSize(width: 0, height: 0)
-    }
-    
+    // For version 2
 //    func scrollToPostHeaderIndex(index: Int){
 //        let indexPath = IndexPath(item: index, section: 0)
 //    }

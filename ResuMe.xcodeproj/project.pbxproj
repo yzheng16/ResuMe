@@ -41,6 +41,9 @@
 		25CC8BB62281428A00B6869C /* CommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CC8BB52281428A00B6869C /* CommentsController.swift */; };
 		25CC8BB82283837700B6869C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CC8BB72283837700B6869C /* CommentCell.swift */; };
 		25CC8BBA2283880800B6869C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CC8BB92283880800B6869C /* Comment.swift */; };
+		25CC8BBC2286073300B6869C /* SelectCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CC8BBB2286073300B6869C /* SelectCategoryController.swift */; };
+		25CC8BBE228614C100B6869C /* MeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CC8BBD228614C100B6869C /* MeController.swift */; };
+		25CC8BC0228623B700B6869C /* LikeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CC8BBF228623B700B6869C /* LikeController.swift */; };
 		8CFA8BAC6245B2EC0F6BFEE8 /* Pods_ResuMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D7F7F8B4A1A4540EE9DB53 /* Pods_ResuMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +97,9 @@
 		25CC8BB52281428A00B6869C /* CommentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsController.swift; sourceTree = "<group>"; };
 		25CC8BB72283837700B6869C /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		25CC8BB92283880800B6869C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		25CC8BBB2286073300B6869C /* SelectCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryController.swift; sourceTree = "<group>"; };
+		25CC8BBD228614C100B6869C /* MeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeController.swift; sourceTree = "<group>"; };
+		25CC8BBF228623B700B6869C /* LikeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeController.swift; sourceTree = "<group>"; };
 		65D7F7F8B4A1A4540EE9DB53 /* Pods_ResuMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResuMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99EAADE875562F88FB533774 /* Pods-ResuMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResuMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ResuMe/Pods-ResuMe.debug.xcconfig"; sourceTree = "<group>"; };
 		EBE2DC98FB9BB5CD5A6C4807 /* Pods-ResuMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResuMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-ResuMe/Pods-ResuMe.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 				2518ECF12267EBDA00650B87 /* PhotoSelectorCell.swift */,
 				25AD0EB622682ACF006A2B1A /* PhotoSelectorHeaderCell.swift */,
 				25AD0EB8226831CF006A2B1A /* SharePhotoController.swift */,
+				25CC8BBB2286073300B6869C /* SelectCategoryController.swift */,
 			);
 			path = AddPicture;
 			sourceTree = "<group>";
@@ -213,6 +220,7 @@
 		2522D29821DC7DCF00711808 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				25CC8BBD228614C100B6869C /* MeController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -220,6 +228,7 @@
 		2522D29921DC7DD800711808 /* Like */ = {
 			isa = PBXGroup;
 			children = (
+				25CC8BBF228623B700B6869C /* LikeController.swift */,
 			);
 			path = Like;
 			sourceTree = "<group>";
@@ -381,6 +390,7 @@
 				25CC8BB62281428A00B6869C /* CommentsController.swift in Sources */,
 				25AD0EB9226831CF006A2B1A /* SharePhotoController.swift in Sources */,
 				2532229921E1451E007B12C8 /* PostCell.swift in Sources */,
+				25CC8BBC2286073300B6869C /* SelectCategoryController.swift in Sources */,
 				256E487921DDAECE00CC71D8 /* BaseCell.swift in Sources */,
 				25AD0EBB226A2450006A2B1A /* Post.swift in Sources */,
 				25CC8BBA2283880800B6869C /* Comment.swift in Sources */,
@@ -395,10 +405,12 @@
 				252080A121E1793100BE7722 /* HomeNavigationCellWithUIButton(have problem).swift in Sources */,
 				2522D28F21DC6AD300711808 /* Extensions.swift in Sources */,
 				25AD0EBD226A2790006A2B1A /* DatabaseUtil.swift in Sources */,
+				25CC8BC0228623B700B6869C /* LikeController.swift in Sources */,
 				2522D27A21DC67DD00711808 /* AppDelegate.swift in Sources */,
 				25533A4B21DE8C7700DD30E5 /* HomePostCell.swift in Sources */,
 				25C4B4A321E039AB0068E8C9 /* UserSearchCell.swift in Sources */,
 				25C4B4A121E033BD0068E8C9 /* UserSearchController.swift in Sources */,
+				25CC8BBE228614C100B6869C /* MeController.swift in Sources */,
 				250679A121E0022200D03540 /* LogoutController.swift in Sources */,
 				25CC8BB82283837700B6869C /* CommentCell.swift in Sources */,
 			);
