@@ -32,7 +32,8 @@ class HomePostCell: UICollectionViewCell {
         let attributedText = NSMutableAttributedString(string: "\(post.user.username) ", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
         attributedText.append(NSAttributedString(string: "\(post.caption)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 5)]))
-        attributedText.append(NSAttributedString(string: "1 week ago", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]))
+//        let timeAgoDisplay = post.creationDate.timeIntervalSince1970
+        attributedText.append(NSAttributedString(string: "\(post.creationDate.timeAgoDisplay())", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]))
         captionLabel.attributedText = attributedText
     }
     
@@ -81,7 +82,7 @@ class HomePostCell: UICollectionViewCell {
         buttonStackView.anchor(photoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 50)
         
         addSubview(captionLabel)
-        captionLabel.anchor(likeButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        captionLabel.anchor(likeButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: -40, leftConstant: 8, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {

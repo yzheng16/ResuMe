@@ -56,21 +56,37 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func fetchPosts(){
 //        guard let uid = Auth.auth().currentUser?.uid else {return}
         Database.fetchUserWithUID(uid: "fqmXu9io3iaUOvMPDEvfiLYH1dv1") { (user) in
-            self.fetchPostWithUser(user: user)
+//            self.fetchPostWithUser(user: user)
+            self.fetchOrderedPostWithUser(user: user)
+        }
+    }
+    
+    func fetchOrderedPostWithUser(user: User){
+        let databaseRef = Database.database().reference()
+        let databasePosts = databaseRef.child("posts").child(user.uid)
+        databasePosts.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else {return}
+                let post = Post(user: user, dictionary: dictionary)
+                self.posts.insert(post, at: 0)
+//                self.posts.append(post)
+            self.collectionView?.reloadData()
+        }) { (error) in
+            print("Failed to fetch posts", error)
         }
     }
     
     func fetchPostWithUser(user: User){
         let databaseRef = Database.database().reference()
         let databasePosts = databaseRef.child("posts").child(user.uid)
-        databasePosts.observeSingleEvent(of: .value, with: { (snapshot) in
+        // this is not ordered
+        databasePosts.queryOrdered(byChild: "creationDate").observe(.value, with: { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else {return}
             dictionary.forEach({ (key, value) in
                 guard let dictionary = value as? [String: Any] else {return}
                 var post = Post(user: user, dictionary: dictionary)
                 post.id = key
-                //                    self.posts.insert(post, at: 0)
-                self.posts.append(post)
+                self.posts.insert(post, at: 0)
+//                self.posts.append(post)
             })
             self.collectionView?.reloadData()
         }) { (error) in

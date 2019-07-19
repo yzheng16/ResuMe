@@ -17,7 +17,8 @@ class CustomImageView: UIImageView {
     func loadImage(urlString: String) {
         lastURLUsedToLoadImage = urlString
         
-        //only loading image once
+        //only fetching image once
+        //if the image is already in the imageCache, system won't fetch it again from network
         if let cachedImage = imageCache[urlString] {
             self.image = cachedImage
             return
@@ -31,6 +32,9 @@ class CustomImageView: UIImageView {
                 return
             }
             
+            //insure all the image are different.
+            //because system will call reloadView twice which is from carousel and post
+            //why it happens? rul can be differnet. Because it is URLSession is async. Some images are big, some are small
             if url.absoluteString != self.lastURLUsedToLoadImage {
                 return
             }
