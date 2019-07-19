@@ -12,4 +12,15 @@ target 'ResuMe' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
 
+  target 'ResuMeTests' do
+  inherit! :search_paths
+
+    # Pods for ResuMe testing
+  
+    pod 'Firebase/Core'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
+
+    end
 end

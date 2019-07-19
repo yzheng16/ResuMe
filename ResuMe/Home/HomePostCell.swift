@@ -32,7 +32,6 @@ class HomePostCell: UICollectionViewCell {
         let attributedText = NSMutableAttributedString(string: "\(post.user.username) ", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
         attributedText.append(NSAttributedString(string: "\(post.caption)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 5)]))
-//        let timeAgoDisplay = post.creationDate.timeIntervalSince1970
         attributedText.append(NSAttributedString(string: "\(post.creationDate.timeAgoDisplay())", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]))
         captionLabel.attributedText = attributedText
     }
@@ -58,7 +57,6 @@ class HomePostCell: UICollectionViewCell {
     }()
     
     @objc func handleComment() {
-        print("trying to show comments")
         guard let post = self.post else {return}
         delegate?.didTapComment(post: post)
     }
