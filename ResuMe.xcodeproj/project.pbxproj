@@ -40,6 +40,7 @@
 		25B4CFA322E2722700B85E03 /* ResuMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B4CFA222E2722700B85E03 /* ResuMeUITests.swift */; };
 		25C4B4A121E033BD0068E8C9 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C4B4A021E033BD0068E8C9 /* UserSearchController.swift */; };
 		25C4B4A321E039AB0068E8C9 /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C4B4A221E039AB0068E8C9 /* UserSearchCell.swift */; };
+		25C75C9322E62D9500EF5036 /* MeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C75C9222E62D9500EF5036 /* MeCell.swift */; };
 		25CC8BB62281428A00B6869C /* CommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CC8BB52281428A00B6869C /* CommentsController.swift */; };
 		25CC8BB82283837700B6869C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CC8BB72283837700B6869C /* CommentCell.swift */; };
 		25CC8BBA2283880800B6869C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CC8BB92283880800B6869C /* Comment.swift */; };
@@ -120,6 +121,7 @@
 		25B4CFA422E2722700B85E03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C4B4A021E033BD0068E8C9 /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
 		25C4B4A221E039AB0068E8C9 /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
+		25C75C9222E62D9500EF5036 /* MeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeCell.swift; sourceTree = "<group>"; };
 		25CC8BB52281428A00B6869C /* CommentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsController.swift; sourceTree = "<group>"; };
 		25CC8BB72283837700B6869C /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		25CC8BB92283880800B6869C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				25CC8BBD228614C100B6869C /* MeController.swift */,
+				25C75C9222E62D9500EF5036 /* MeCell.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				2522D27A21DC67DD00711808 /* AppDelegate.swift in Sources */,
 				25533A4B21DE8C7700DD30E5 /* HomePostCell.swift in Sources */,
 				25C4B4A321E039AB0068E8C9 /* UserSearchCell.swift in Sources */,
+				25C75C9322E62D9500EF5036 /* MeCell.swift in Sources */,
 				25C4B4A121E033BD0068E8C9 /* UserSearchController.swift in Sources */,
 				25CC8BBE228614C100B6869C /* MeController.swift in Sources */,
 				250679A121E0022200D03540 /* LogoutController.swift in Sources */,
