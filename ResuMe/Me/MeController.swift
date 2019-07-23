@@ -39,7 +39,7 @@ class Service: NSObject {
         }.resume()
     }
     
-    func createPost(title: String, body: String, complition: @escaping (Error?) -> ()) {
+    func createPost(title: String, body: String, completion: @escaping (Error?) -> ()) {
         guard let url = URL(string: "http://Localhost:1337/post") else { return }
         var urlRequest = URLRequest(url: url)
         let params = ["title": title, "postBody": body]
@@ -53,18 +53,33 @@ class Service: NSObject {
                 
             URLSession.shared.dataTask(with: urlRequest) { (data, resp, err) in
                 if let err = err {
-                    print("Failed to creat new post: ", err)
+                    completion(err)
                     return
                 }
-                complition(nil)
+                completion(nil)
             }.resume()
         } catch {
-            complition(error)
+            completion(error)
         }
+    }
+    
+    func deletePost(id: Int, completion: @escaping (Error?) -> ()) {
+        guard let url = URL(string: "http://Localhost:1337/post/\(id)") else { return }
+        var urlRequest = URLRequest(url: url)
+        
+        urlRequest.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, resp, err) in
+            if let err = err {
+                completion(err)
+                return
+            }
+            completion(nil)
+        }.resume()
     }
 }
 
-class MeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, MeCellDeleget {
     
     var posts = [PostREST]()
     let cellId = "cellId"
@@ -122,7 +137,25 @@ class MeController: UICollectionViewController, UICollectionViewDelegateFlowLayo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MeCell
 //        cell.backgroundColor = .yellow
         cell.post = posts[indexPath.item]
+        cell.deleget = self
         return cell
+    }
+    
+    func didTapDelete(post: PostREST) {
+        Service.shared.deletePost(id: post.id) { (err) in
+            if let err = err {
+                print("Failed to delete post object: ", err)
+                return
+            }
+        }
+        print("Finshed deleting post")
+        
+        guard let index = self.posts.firstIndex(where: {$0.id == post.id}) else { return }
+        self.posts.remove(at: index)
+        self.collectionView.reloadData()
+        //Can not simply call fetchPosts function. Because system uses more time to delete, system won't get back the
+        //right posts list from server
+//        self.fetchPosts()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol MeCellDeleget {
+    func didTapDelete(post: PostREST)
+}
+
 class MeCell: UICollectionViewCell {
     
+    var deleget: MeCellDeleget?
     var post: PostREST? {
         didSet {
             guard let title = post?.title else { return }
@@ -31,12 +36,19 @@ class MeCell: UICollectionViewCell {
         return l
     }()
     
-    let deleteButton: UIButton = {
+    lazy var deleteButton: UIButton = {
         let b = UIButton(type: .system)
         b.setTitle("Delete", for: .normal)
         b.setTitleColor(.red, for: .normal)
+        b.addTarget(self, action: #selector(handleDelete), for: .touchUpInside)
         return b
     }()
+    
+    @objc func handleDelete() {
+        print("deleting")
+        guard let post = self.post else { return }
+        deleget?.didTapDelete(post: post)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

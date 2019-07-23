@@ -57,6 +57,7 @@ class HomePostCell: UICollectionViewCell {
     }()
     
     @objc func handleComment() {
+        print("comment")
         guard let post = self.post else {return}
         delegate?.didTapComment(post: post)
     }
