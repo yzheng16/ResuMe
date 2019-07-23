@@ -74,6 +74,12 @@ class Service: NSObject {
                 completion(err)
                 return
             }
+            
+            if let resp = resp as? HTTPURLResponse, resp.statusCode != 200 {
+                let errorString = String(data: data ?? Data(), encoding: .utf8) ?? ""
+                completion(NSError(domain: "", code: resp.statusCode, userInfo: [NSLocalizedDescriptionKey: errorString]))
+                return
+            }
             completion(nil)
         }.resume()
     }
@@ -147,15 +153,16 @@ class MeController: UICollectionViewController, UICollectionViewDelegateFlowLayo
                 print("Failed to delete post object: ", err)
                 return
             }
+            print("Finshed deleting post")
+            
+            //Solution 1: manully delete item on view, don't need to fetch data again
+//            guard let index = self.posts.firstIndex(where: {$0.id == post.id}) else { return }
+//            self.posts.remove(at: index)
+//            self.collectionView.reloadData()
+            
+            self.fetchPosts()
         }
-        print("Finshed deleting post")
         
-        guard let index = self.posts.firstIndex(where: {$0.id == post.id}) else { return }
-        self.posts.remove(at: index)
-        self.collectionView.reloadData()
-        //Can not simply call fetchPosts function. Because system uses more time to delete, system won't get back the
-        //right posts list from server
-//        self.fetchPosts()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
